@@ -214,5 +214,95 @@
     "eorFee": 7188,
     "totalCost": 117539,
     "insight": "A senior Python AI/ML engineer in Mexico costs a fraction of an SF dev, while operating in the exact same PST/CST timezone."
+  },
+  {
+    "country": "Poland", "role": "React Developer", "level": "Junior", "slug": "hire-junior-react-developers-in-poland",
+    "baseSalary": 32000, "taxes": "22.50%", "benefits": 2666, "eorFee": 7188, "totalCost": 49054,
+    "insight": "Poland is Central Europe's tech powerhouse. Junior devs here typically hold rigorous CS degrees and speak excellent English (EF EPI rank: Very High)."
+  },
+  {
+    "country": "Poland", "role": "React Developer", "level": "Mid-Level", "slug": "hire-mid-level-react-developers-in-poland",
+    "baseSalary": 60000, "taxes": "22.50%", "benefits": 5000, "eorFee": 7188, "totalCost": 85688,
+    "insight": "Mid-level Polish front-end engineers are highly sought after by UK and US fintechs for their uncompromising code quality and GDPR compliance awareness."
+  },
+  {
+    "country": "Poland", "role": "React Developer", "level": "Senior", "slug": "hire-senior-react-developers-in-poland",
+    "baseSalary": 92000, "taxes": "22.50%", "benefits": 7666, "eorFee": 7188, "totalCost": 127554,
+    "insight": "Senior React architects in Warsaw or Krakow command premium European rates, but still offer a 30% discount compared to London or Silicon Valley."
+  },
+  {
+    "country": "Poland", "role": "Node.js Developer", "level": "Junior", "slug": "hire-junior-nodejs-developers-in-poland",
+    "baseSalary": 33000, "taxes": "22.50%", "benefits": 2750, "eorFee": 7188, "totalCost": 50363,
+    "insight": "Polish universities heavily emphasize backend logic and algorithms, making their entry-level Node.js developers highly capable in complex data structures."
+  },
+  {
+    "country": "Poland", "role": "Node.js Developer", "level": "Mid-Level", "slug": "hire-mid-level-nodejs-developers-in-poland",
+    "baseSalary": 62000, "taxes": "22.50%", "benefits": 5166, "eorFee": 7188, "totalCost": 88304,
+    "insight": "Expect mid-level Node devs in Poland to be fully autonomous, with strong DevOps fundamentals and cloud infrastructure (AWS/Azure) experience."
+  },
+  {
+    "country": "Poland", "role": "Node.js Developer", "level": "Senior", "slug": "hire-senior-nodejs-developers-in-poland",
+    "baseSalary": 95000, "taxes": "22.50%", "benefits": 7916, "eorFee": 7188, "totalCost": 131479,
+    "insight": "Hiring a senior Polish backend engineer means securing enterprise-grade architecture skills, often honed in massive European banking systems."
+  },
+  {
+    "country": "Poland", "role": "Python Developer", "level": "Junior", "slug": "hire-junior-python-developers-in-poland",
+    "baseSalary": 34000, "taxes": "22.50%", "benefits": 2833, "eorFee": 7188, "totalCost": 51671,
+    "insight": "Poland is a rising hub for AI and machine learning. Junior Python developers often have specialized academic backgrounds in data science."
+  },
+  {
+    "country": "Poland", "role": "Python Developer", "level": "Mid-Level", "slug": "hire-mid-level-python-developers-in-poland",
+    "baseSalary": 64000, "taxes": "22.50%", "benefits": 5333, "eorFee": 7188, "totalCost": 90921,
+    "insight": "Mid-level Polish Python devs excel in heavily regulated industries, providing robust solutions for medtech and cybersecurity startups."
+  },
+  {
+    "country": "Poland", "role": "Python Developer", "level": "Senior", "slug": "hire-senior-python-developers-in-poland",
+    "baseSalary": 98000, "taxes": "22.50%", "benefits": 8166, "eorFee": 7188, "totalCost": 135404,
+    "insight": "A senior Python/Django specialist in Poland delivers top-tier performance. The time zone (CET) allows for morning syncs with US East Coast teams."
+  },
+  {
+    "country": "Romania", "role": "React Developer", "level": "Junior", "slug": "hire-junior-react-developers-in-romania",
+    "baseSalary": 24000, "taxes": "5.00%", "benefits": 2000, "eorFee": 7188, "totalCost": 34388,
+    "insight": "Romania offers one of the most cost-effective talent pools in the EU. Junior React devs in Bucharest are hungry, adaptable, and fluent in English."
+  },
+  {
+    "country": "Romania", "role": "React Developer", "level": "Mid-Level", "slug": "hire-mid-level-react-developers-in-romania",
+    "baseSalary": 46000, "taxes": "5.00%", "benefits": 3833, "eorFee": 7188, "totalCost": 59321,
+    "insight": "Romania's tech sector is booming. Mid-level developers frequently work via B2B contracts (PFA/SRL), making cross-border compliance incredibly streamlined."
+  },
+  {
+    "country": "Romania", "role": "React Developer", "level": "Senior", "slug": "hire-senior-react-developers-in-romania",
+    "baseSalary": 75000, "taxes": "5.00%", "benefits": 6250, "eorFee": 7188, "totalCost": 92188,
+    "insight": "Senior React talent in Cluj-Napoca provides Silicon Valley-level expertise at less than half the US domestic cost, with zero EU data compliance friction."
+  },
+  {
+    "country": "Romania", "role": "Node.js Developer", "level": "Junior", "slug": "hire-junior-nodejs-developers-in-romania",
+    "baseSalary": 25000, "taxes": "5.00%", "benefits": 2083, "eorFee": 7188, "totalCost": 35521,
+    "insight": "Entry-level Node developers in Romania benefit from strong local tech communities and hackathons, ensuring they are up-to-date with modern frameworks."
+  },
+  {
+    "country": "Romania", "role": "Node.js Developer", "level": "Mid-Level", "slug": "hire-mid-level-nodejs-developers-in-romania",
+    "baseSalary": 48000, "taxes": "5.00%", "benefits": 4000, "eorFee": 7188, "totalCost": 61588,
+    "insight": "Mid-level backend engineers here often manage full project lifecycles. Their exceptional cultural alignment with Western clients minimizes miscommunication."
+  },
+  {
+    "country": "Romania", "role": "Node.js Developer", "level": "Senior", "slug": "hire-senior-nodejs-developers-in-romania",
+    "baseSalary": 78000, "taxes": "5.00%", "benefits": 6500, "eorFee": 7188, "totalCost": 95588,
+    "insight": "Senior Romanian Node.js devs are highly technical and direct. They excel in solving complex scaling issues for high-traffic SaaS applications."
+  },
+  {
+    "country": "Romania", "role": "Python Developer", "level": "Junior", "slug": "hire-junior-python-developers-in-romania",
+    "baseSalary": 26000, "taxes": "5.00%", "benefits": 2166, "eorFee": 7188, "totalCost": 36654,
+    "insight": "Romania's IT tax exemptions (historically favorable) have fostered a massive wave of young Python engineers eager to work on international projects."
+  },
+  {
+    "country": "Romania", "role": "Python Developer", "level": "Mid-Level", "slug": "hire-mid-level-python-developers-in-romania",
+    "baseSalary": 50000, "taxes": "5.00%", "benefits": 4166, "eorFee": 7188, "totalCost": 63854,
+    "insight": "Mid-level Python developers in Romania are highly versatile, often taking on hybrid roles encompassing data engineering and backend API development."
+  },
+  {
+    "country": "Romania", "role": "Python Developer", "level": "Senior", "slug": "hire-senior-python-developers-in-romania",
+    "baseSalary": 82000, "taxes": "5.00%", "benefits": 6833, "eorFee": 7188, "totalCost": 100121,
+    "insight": "A senior Python architect in Romania is a strategic asset, capable of leading remote teams and driving core product innovation within the EET time zone."
   }
 ]
