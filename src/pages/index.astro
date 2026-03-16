@@ -1,30 +1,34 @@
 ---
-// 1. 导入你的数据源
+// 自动导入你的数据库
 import rolesData from '../data/roles.json';
 
-// 2. 提取所有不重复的国家列表（为了将来扩展多个国家做准备）
-const countries = [...new Set(rolesData.map(item => item.country))];
-
-// 3. 网站基础 SEO 描述
-const siteTitle = "TalentScaleHQ | Nearshore Developer Cost & Salary Directory 2026";
-const siteDescription = "Compare accurate employment costs, taxes, and EOR fees for hiring software developers across Latin America and Eastern Europe.";
+// 按国家对数据进行自动分组，方便生成极其专业的目录结构
+const groupedRoles = rolesData.reduce((acc, curr) => {
+  if (!acc[curr.country]) acc[curr.country] = [];
+  acc[curr.country].push(curr);
+  return acc;
+}, {});
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>{siteTitle}</title>
-    <meta name="description" content={siteDescription} />
+    
+    <title>TalentScaleHQ | Nearshore & Offshore Developer Cost Calculator 2026</title>
+    <meta name="description" content="Calculate the true cost of hiring remote tech talent in Latin America and Eastern Europe. Compare base salaries, employer taxes, and EOR compliance fees." />
     <style>
-      body { font-family: system-ui, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 2rem; }
-      h1 { font-size: 2.5rem; color: #0f172a; margin-bottom: 0.5rem; }
-      .subtitle { font-size: 1.2rem; color: #64748b; margin-bottom: 3rem; border-bottom: 2px solid #eee; padding-bottom: 1rem; }
-      .country-section { margin-bottom: 2.5rem; background: #f8fafc; padding: 1.5rem; border-radius: 8px; border: 1px solid #e2e8f0; }
-      .country-title { color: #1e293b; font-size: 1.5rem; margin-top: 0; }
-      .role-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
-      .role-list li a { display: block; padding: 1rem; background: white; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #2563eb; font-weight: 500; transition: box-shadow 0.2s; }
-      .role-list li a:hover { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-decoration: underline; }
+      body { font-family: system-ui, sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 2rem; background-color: #f8fafc; }
+      header { text-align: center; margin-bottom: 4rem; }
+      h1 { font-size: 2.8rem; color: #0f172a; margin-bottom: 1rem; }
+      .subtitle { font-size: 1.2rem; color: #64748b; max-width: 700px; margin: 0 auto; }
+      .country-section { margin-bottom: 3rem; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+      .country-title { font-size: 1.8rem; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+      .card { display: block; padding: 1.5rem; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; transition: all 0.2s ease; background: #ffffff; }
+      .card:hover { border-color: #3b82f6; box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1); transform: translateY(-2px); }
+      .role-title { font-weight: bold; font-size: 1.1rem; color: #2563eb; margin-bottom: 0.5rem; }
+      .action-text { font-size: 0.9rem; color: #64748b; font-weight: 500; }
     </style>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4SZTDNBP37"></script>
@@ -36,35 +40,34 @@ const siteDescription = "Compare accurate employment costs, taxes, and EOR fees 
   gtag('config', 'G-4SZTDNBP37');
 </script>
   </head>
-  
   <body>
     
     <header>
-      <h1>Global Tech Talent Cost Directory</h1>
-      <p class="subtitle">Skip the guesswork. Access verified 2026 employment costs, local taxes, and salary data for hiring remote engineering teams.</p>
+      <h1>Global Hiring Cost Directory 2026</h1>
+      <p class="subtitle">Select a tech role and location to see the exact breakdown of base salaries, local employer taxes, and compliance costs.</p>
     </header>
 
     <main>
-      {countries.map(country => (
-        <section class="country-section">
-          <h2 class="country-title">Top Roles in {country}</h2>
-          <ul class="role-list">
-            {rolesData
-              .filter(role => role.country === country)
-              .map(role => (
-                <li>
-                  <a href={`/${role.slug}`}>
-                    Hire {role.level} {role.role} in {country} &rarr;
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </section>
+      {/* 遍历分组后的数据，生成带超链接的网格 */}
+      {Object.entries(groupedRoles).map(([country, roles]) => (
+        <div class="country-section">
+          <h2 class="country-title">{country} Hub</h2>
+          <div class="grid">
+            {roles.map((role) => (
+              <a href={`/${role.slug}`} class="card">
+                <div class="role-title">Hire {role.level} {role.role}</div>
+                <div class="action-text">View Salary & Tax Breakdown &rarr;</div>
+              </a>
+            ))}
+          </div>
+        </div>
       ))}
     </main>
-    <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #eee; text-align: center; font-size: 0.9rem; color: #666;">
+
+    <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #cbd5e1; text-align: center; font-size: 0.9rem; color: #64748b;">
       <p>&copy; 2026 TalentScaleHQ. All rights reserved.</p>
-      <p><a href="/methodology" style="color: #666; text-decoration: underline;">Data Methodology & Legal Disclaimer</a></p>
+      <p><a href="/methodology" style="color: #64748b; text-decoration: underline;">Data Methodology & Legal Disclaimer</a></p>
     </footer>
+
   </body>
 </html>
