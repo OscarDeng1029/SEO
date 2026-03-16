@@ -1,0 +1,86 @@
+---
+// 1. 导入你的数据源
+import rolesData from '../data/roles.json';
+
+// 2. 告诉 Astro 需要生成哪些页面 (getStaticPaths 是核心)
+export async function getStaticPaths() {
+  return rolesData.map((data) => ({
+    params: { slug: data.slug },
+    props: { data },
+  }));
+}
+
+// 3. 接收当前页面的数据
+const { data } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Hire {data.level} {data.role}s in {data.country} | Cost & Salary 2026</title>
+    <meta name="description" content="Discover the true cost to hire a {data.level} {data.role} in {data.country}. Compare base salary, local taxes ({data.taxes}), and EOR fees." />
+    <style>
+      body { font-family: system-ui, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 2rem; }
+      h1 { color: #111; font-size: 2.5rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+      .hero { background: #f8fafc; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; }
+      table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 1.1rem; }
+      th, td { padding: 1rem; border-bottom: 1px solid #ddd; text-align: left; }
+      th { background: #0f172a; color: white; }
+      .total-cost { font-weight: bold; color: #16a34a; font-size: 1.2rem; }
+      .cta-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1.5rem; margin-top: 2rem; }
+      .btn { display: inline-block; background: #2563eb; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 10px;}
+    </style>
+  </head>
+  <body>
+    
+    <div class="hero">
+      <h1>Hire {data.level} {data.role}s in {data.country}</h1>
+      <p>Stop guessing the real costs. Here is the exact breakdown of what it takes to employ a full-time, compliant <strong>{data.level} {data.role}</strong> in <strong>{data.country}</strong> in 2026.</p>
+    </div>
+
+    <h2>2026 Total Employment Cost Breakdown</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Cost Component</th>
+          <th>Annual Amount (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Base Salary</td>
+          <td>${data.baseSalary.toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td>Local Employer Taxes ({data.taxes})</td>
+          <td>${Math.round(data.baseSalary * 0.2502).toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td>Mandatory Benefits (13th Month etc.)</td>
+          <td>${data.benefits.toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td>Estimated EOR / Management Fee</td>
+          <td>${data.eorFee.toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td><strong>Total Annual Cost</strong></td>
+          <td class="total-cost">${data.totalCost.toLocaleString()}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Why {data.country}?</h2>
+    <p>{data.insight}</p>
+
+    <div class="cta-box">
+      <h3>Ready to hire this role?</h3>
+      <p>We partner with vetted Dev Shops in {data.country}. Skip the 3-month recruiting process. Tell us what you need below.</p>
+      
+      <iframe data-tally-src="https://tally.so/embed/81exjr?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="300" frameborder="0" marginheight="0" marginwidth="0" title="Get Pre-screened Candidates & Custom Quotes"></iframe>
+      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+    </div>
+
+  </body>
+</html>
