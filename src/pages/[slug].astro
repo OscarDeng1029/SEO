@@ -12,42 +12,77 @@ export async function getStaticPaths() {
 
 // 3. 接收当前页面的数据
 const { data } = Astro.props;
+
+// 计算节省比例 (如果存在对比数据)
+const savingsPercent = data.usCostComparison 
+  ? Math.round(((data.usCostComparison - data.totalCost) / data.usCostComparison) * 100) 
+  : null;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-   <title>{`${data.level} ${data.role} Salary in ${data.country} (Q2 2026) | Stop Overpaying US Agencies`}</title>
-   <meta name="description" content={`Actual rates revealed. Calculate the true cost of hiring a ${data.level} ${data.role} in ${data.country} vs US rates. Access our vetted pool of elite Dev Shops today.`} />
+    <title>{`${data.level} ${data.role} Salary in ${data.country} (Q2 2026) | Stop Overpaying US Agencies`}</title>
+    <meta name="description" content={`Actual rates revealed. Calculate the true cost of hiring a ${data.level} ${data.role} in ${data.country} vs US rates. Access our vetted pool of elite Dev Shops today.`} />
+    
     <style>
       body { font-family: system-ui, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 2rem; }
-      h1 { color: #111; font-size: 2.5rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
-      .hero { background: #f8fafc; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; }
-      table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 1.1rem; }
+      h1 { color: #111; font-size: 2.5rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; line-height: 1.2; }
+      h2 { color: #1f2937; margin-top: 2.5rem; border-left: 4px solid #3b82f6; padding-left: 0.75rem; }
+      .hero { background: #f8fafc; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid #e2e8f0; }
+      .hero-highlight { font-size: 1.2rem; color: #0f172a; margin-top: 1rem; padding: 1rem; background: #fff; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+      table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 1.1rem; }
       th, td { padding: 1rem; border-bottom: 1px solid #ddd; text-align: left; }
       th { background: #0f172a; color: white; }
       .total-cost { font-weight: bold; color: #16a34a; font-size: 1.2rem; }
-      .cta-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1.5rem; margin-top: 2rem; }
+      .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; list-style: none; }
+      .skills-list li { background: #e0f2fe; color: #0369a1; padding: 0.4rem 0.8rem; border-radius: 999px; font-size: 0.9rem; font-weight: 500; }
+      .info-box { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin-top: 1rem; color: #92400e; }
+      .faq-item { margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
+      .faq-question { font-weight: bold; margin-bottom: 0.5rem; color: #1e293b; }
+      .cta-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1.5rem; margin-top: 3rem; border-radius: 0 8px 8px 0; }
     </style>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4SZTDNBP37"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-4SZTDNBP37');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4SZTDNBP37"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4SZTDNBP37');
+    </script>
+
+    {data.faqs && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": data.faqs.map((faq: any) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
+      })} />
+    )}
   </head>
   <body>
     
     <div class="hero">
       <h1>Hire {data.level} {data.role}s in {data.country}</h1>
       <p>Stop guessing the real costs. Here is the exact breakdown of what it takes to employ a full-time, compliant <strong>{data.level} {data.role}</strong> in <strong>{data.country}</strong> in 2026.</p>
+      
+      {/* 动态对比区块：如果 JSON 中有 US cost 数据，则展示省钱比例 */}
+      {data.usCostComparison && savingsPercent && (
+        <div class="hero-highlight">
+          <strong>Cost Advantage:</strong> While hiring locally in the US might cost upwards of <strong>${data.usCostComparison.toLocaleString()}</strong>, building your team in {data.country} drops your total liability to <strong>${data.totalCost.toLocaleString()}</strong> — saving you roughly <strong><span style="color: #16a34a;">{savingsPercent}%</span></strong> per hire.
+        </div>
+      )}
     </div>
 
     <h2>2026 Total Employment Cost Breakdown</h2>
+    <p>This table represents the fully loaded annual cost, eliminating hidden agency fees.</p>
     <table>
       <thead>
         <tr>
@@ -79,8 +114,43 @@ const { data } = Astro.props;
       </tbody>
     </table>
 
+    {/* 新增区块：技能要求画像 (解决 Thin Content 问题) */}
+    {data.skillsExpected && (
+      <>
+        <h2>Talent Profile: What to Expect</h2>
+        <p>A typical {data.level} {data.role} sourced from our {data.country} talent network possesses the following core competencies:</p>
+        <ul class="skills-list">
+          {data.skillsExpected.map((skill: string) => (
+            <li>{skill}</li>
+          ))}
+        </ul>
+      </>
+    )}
+
     <h2>Why {data.country}?</h2>
     <p>{data.insight}</p>
+    
+    {/* 新增区块：本地雇佣合规提示 */}
+    {data.complianceNotes && (
+      <div class="info-box">
+        <strong>Compliance Note for {data.country}:</strong> {data.complianceNotes}
+      </div>
+    )}
+
+    {/* 新增区块：结构化问答区 */}
+    {data.faqs && (
+      <>
+        <h2>Frequently Asked Questions</h2>
+        <div>
+          {data.faqs.map((faq: any) => (
+            <div class="faq-item">
+              <div class="faq-question">{faq.question}</div>
+              <div class="faq-answer">{faq.answer}</div>
+            </div>
+          ))}
+        </div>
+      </>
+    )}
 
     <div class="cta-box">
       <h3>Ready to hire this role?</h3>
