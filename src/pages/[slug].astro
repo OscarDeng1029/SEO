@@ -23,8 +23,8 @@ const savingsPercent = data.usCostComparison
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>{`${data.level} ${data.role} Salary in ${data.country} (Q2 2026) | Stop Overpaying US Agencies`}</title>
-    <meta name="description" content={`Actual rates revealed. Calculate the true cost of hiring a ${data.level} ${data.role} in ${data.country} vs US rates. Access our vetted pool of elite Dev Shops today.`} />
+    <title>{data.seoTitle || `${data.level} ${data.role} Salary in ${data.country} (Q2 2026) | Stop Overpaying US Agencies`}</title>
+    <meta name="description" content={data.seoDescription || `Actual rates revealed. Calculate the true cost of hiring a ${data.level} ${data.role} in ${data.country} vs US rates. Access our vetted pool of elite Dev Shops today.`} />
     
     <link rel="canonical" href={`https://talentscalehq.com/${data.slug}`} />
     
