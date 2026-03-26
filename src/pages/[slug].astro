@@ -155,10 +155,13 @@ const savingsPercent = data.usCostComparison
     )}
 
     <div class="cta-box">
-      <h3>Ready to hire this role?</h3>
-      <p>We partner with vetted Dev Shops in {data.country}. Skip the 3-month recruiting process. Tell us what you need below.</p>
+      <h3 style="color: #1e40af; font-size: 1.5rem; margin-bottom: 0.5rem;">Unlock {data.country} Agency Rate Cards & Vetted Profiles</h3>
+      <p style="margin-bottom: 1.5rem; font-weight: 500; color: #334155;">
+        Enter your work email below to instantly receive the 2026 unredacted rate cards and full company decks from our ISO-certified and elite partners in <strong>{data.country}</strong>.
+      </p>
       
-      <iframe data-tally-src="https://tally.so/embed/81exjr?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="300" frameborder="0" marginheight="0" marginwidth="0" title="Get Pre-screened Candidates & Custom Quotes"></iframe>
+      {/* 注意：我在 URL 末尾加上了 &country={data.country}，这样客户提交时，你的后台能直接知道他是在哪个国家页面提交的 */}
+      <iframe data-tally-src={`https://tally.so/embed/81exjr?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&country=${data.country}`} loading="lazy" width="100%" height="300" frameborder="0" marginheight="0" marginwidth="0" title="Get Pre-screened Candidates & Custom Quotes"></iframe>
       <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
     </div>
 
